@@ -7,7 +7,7 @@ p{
 }
 
 h1,h2,h3,h4,h5,h6{
-  font-family:Papyrus;
+  font-family:'Spicy Rice', cursive;
   text-transform: uppercase;
 }
 
@@ -18,9 +18,10 @@ button:hover {
 }
 
 #burger-title{
-  max-height: 100px;
+  height: 20vh;
   overflow:hidden;
   margin-bottom:10px;
+  text-align: center;
 }
 #burger-title > img{
   opacity:0.3;
@@ -28,8 +29,15 @@ button:hover {
 }
 #burger-title > h1{
   position:absolute;
-  margin: 20px 10px;
+  margin-left:auto;
+  margin-right:auto;
+  left: 150px;
   padding-top:10px;
+  font-size: 3em;
+}
+
+h2{
+  font-size: 2em;
 }
 
 section > button,form,h2,h3,#info-text,#select-text{
@@ -51,4 +59,27 @@ section > button,form,h2,h3,#info-text,#select-text{
 
 table{
   width:90%;
+}
+
+.burger-wrapper{
+  display: grid;
+  grid-gap: 20px;
+}
+
+.burger{
+  grid-row:1;
+}
+
+.burger > h3{
+  text-align: center;
+}
+
+.burger > img{
+  margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+ul{
+  margin-left:20%
 }
