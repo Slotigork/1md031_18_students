@@ -13,7 +13,7 @@
 		<script src="js/bttn-listener.js" defer></script>
 </head>
 <body>
-	<main>
+	<main id="order-page">
 		<section id="burger-title">
 			<h1>Welcome to BurgerOnline</h1>
 			<img src="//c1.staticflickr.com/7/6078/6043305670_53a0679ece_b.jpg">
@@ -30,8 +30,11 @@
 					<li>{{item.kcal + ' kCal'}} </li>
 						<li v-if="item.containsGluten == true"> Contains Gluten</li>
 						<li v-if="item.containsLactose == true"> Contains Lactose</li>
+						<input type="checkbox" :value="item.name" v-model="pickedBurgers">
+						<label>order</label>
 					</ul>
 				</div>
+				<span>Picked: {{pickedBurgers}} </span>
 				<!--<div class="fire burger">
 					<h3>Fire Burger</h3>
 					<img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4409427.jpg" alt="Fire Burger" title="Fire Burger" width="300">
@@ -70,52 +73,59 @@
 
 				<form>
 					<p>
-						<label for="fullname">First</label>
+						<label for="fullname">Full name</label>
 						<br>
-						<input type="text" id="fullname" name="fn" required="required" placeholder="First- and last name">
+						<input type="text" id="fullname" name="fn" required="required" placeholder="First- and last name" v-model="fullname">
+						{{fullname}}
 					</p>
 					<p>
 						<label for="email">E-mail</label>
 						<br>
-						<input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+						<input type="email" id="email" name="em" required="required" placeholder="E-mail address" v-model="email">
+						{{email}}
 					</p>
 					<label for="streetname">Street</label>
 					<br>
-					<input type="text" id="streetname" name="sn" required="required" placeholder="Street name">
+					<input type="text" id="streetname" name="sn" required="required" placeholder="Street name" v-model="streetname">
+					{{streetname}}
 				</p>
 				<label for="housenum">House</label>
 				<br>
-				<input type="number" id="housenum" name="hn" required="required" placeholder="House number">
+				<input type="number" id="housenum" name="hn" required="required" placeholder="House number" v-model="housenum">
+				{{housenum}}
 			</p>
 
 			<p>
-				<label for="payment">Payment options</label><br>
-				<select id="payment" name="rcp">
+				<label for="payment">Payment options</label>
+				<br>
+				<select id="payment" name="rcp" v-model="payment">
 					<option>Credit Card</option>
 					<option>Debit Card</option>
 					<option>Cash</option>
 					<option>Food Coupons</option>
 					<option>Blood of the infidels</option>
 				</select>
+				{{payment}}
 			</p>
 
-			<input type="radio" name="gender" value="male">
-			<label for="male">Male</label>
+			<input type="radio" name="gender" value="Male" v-model="gender">
+			<label for="Male">Male</label>
 			<br>
 
-			<input type="radio" name="gender" value="female">
-			<label for="female">Female</label>
+			<input type="radio" name="gender" value="Female" v-model="gender">
+			<label for="Female">Female</label>
 			<br>
 
-			<input type="radio" name="gender" value="nonbinary">
-			<label for="nonbinary">Non-binary</label>
+			<input type="radio" name="gender" value="Non-binary" v-model="gender">
+			<label for="Non-binary">Non-binary</label>
 			<br>
 
-			<input type="radio" name="gender" value="undisclosed" checked="checked">
-			<label for="undisclosed">Undisclosed</label>
+			<input type="radio" name="gender" value="Undisclosed" v-model="gender">
+			<label for="Undisclosed">Undisclosed</label>
+			{{gender}}
 		</form>
 		<br>
-		<button v-on:click="markDone()" type="submit" id="submit-bttn"><img src="https://cdn4.iconfinder.com/data/icons/tech-support-4/28/speedy_delivery-512.png" width="20px"> Send Info</button>
+		<button v-on:click="markDone()" type="submit" id="submit-bttn"><img src="https://cdn4.iconfinder.com/data/icons/tech-support-4/28/speedy_delivery-512.png" width="20px">Send Info</button>
 
 	</section>
 </main>
