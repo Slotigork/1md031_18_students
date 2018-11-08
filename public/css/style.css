@@ -63,20 +63,24 @@ table{
   width:90%;
 }
 
-.burger-wrapper{
+#burger-wrapper{
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 0px;
+  margin: 0 auto;
+  width:100%;
+  grid-template-columns: 20% 20% 20% 20% 20%;
 }
 
-.burger{
-  grid-row:1;
+.menu-item{
+
+  vertical-align: top;
 }
 
-.burger > h3{
+.menu-item > h3{
   text-align: center;
 }
 
-.burger > img{
+.menu-item > img{
   margin-left: auto;
 	margin-right: auto;
 	display: block;

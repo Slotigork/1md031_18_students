@@ -6,9 +6,11 @@
 	<meta charset="utf-8"/>
 	<link rel="stylesheet" type="text/css" href="/css/style.css" />
 	<link href="https://fonts.googleapis.com/css?family=Spicy+Rice" rel="stylesheet">
-	<script src="https://vuejs.org/js/vue.js"></script> 
+	<script type="text/javascript" src="js/menu.js"></script>
+	<script src="https://vuejs.org/js/vue.js"></script>
 	 <script src="js/js_script.js"></script>
-	  <script src="js/vue_script.js"></script>
+	  <script src="js/vue_script.js" defer></script>
+		<script src="js/bttn-listener.js" defer></script>
 </head>
 <body>
 	<main>
@@ -18,10 +20,19 @@
 		</section>
 
 		<section id="select-section">
-			<h2>Select burgers</h2>
+			<h3>Select burgers</h3>
 			<p id="select-text">This is the burger selector</p>
-			<div class="burger-wrapper">
-				<div class="fire burger">
+			<div id="burger-wrapper">
+				<div class="menu-item" v-for="item in menu">
+					<h3>{{item.name}}</h3>
+					<img :src="item.img" width="200">
+					<ul>
+					<li>{{item.kcal + ' kCal'}} </li>
+						<li v-if="item.containsGluten == true"> Contains Gluten</li>
+						<li v-if="item.containsLactose == true"> Contains Lactose</li>
+					</ul>
+				</div>
+				<!--<div class="fire burger">
 					<h3>Fire Burger</h3>
 					<img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4409427.jpg" alt="Fire Burger" title="Fire Burger" width="300">
 					<ul>
@@ -48,6 +59,7 @@
 						<li>Contains ???</li>
 						<li>????</li>
 					</ul>
+				!-->
 				</div>
 			</div>
 
@@ -103,7 +115,7 @@
 			<label for="undisclosed">Undisclosed</label>
 		</form>
 		<br>
-		<button type="submit"><img src="https://cdn4.iconfinder.com/data/icons/tech-support-4/28/speedy_delivery-512.png" width="20px"> Send Info</button>
+		<button v-on:click="markDone()" type="submit" id="submit-bttn"><img src="https://cdn4.iconfinder.com/data/icons/tech-support-4/28/speedy_delivery-512.png" width="20px"> Send Info</button>
 
 	</section>
 </main>
