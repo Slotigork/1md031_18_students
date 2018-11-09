@@ -8,9 +8,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Spicy+Rice" rel="stylesheet">
 	<script type="text/javascript" src="js/menu.js"></script>
 	<script src="https://vuejs.org/js/vue.js"></script>
-	 <script src="js/js_script.js"></script>
-	  <script src="js/vue_script.js" defer></script>
-		<script src="js/bttn-listener.js" defer></script>
+	<script src="js/js_script.js"></script>
+	<script src="js/vue_script.js" defer></script>
 </head>
 <body>
 	<main id="order-page">
@@ -27,112 +26,123 @@
 					<h3>{{item.name}}</h3>
 					<img :src="item.img" width="200">
 					<ul>
-					<li>{{item.kcal + ' kCal'}} </li>
+						<li>{{item.kcal + ' kCal'}} </li>
 						<li v-if="item.containsGluten == true"> Contains Gluten</li>
 						<li v-if="item.containsLactose == true"> Contains Lactose</li>
 						<input type="checkbox" :value="item.name" v-model="pickedBurgers">
 						<label>order</label>
 					</ul>
 				</div>
-				<span>Picked: {{pickedBurgers}} </span>
 				<!--<div class="fire burger">
-					<h3>Fire Burger</h3>
-					<img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4409427.jpg" alt="Fire Burger" title="Fire Burger" width="300">
-					<ul>
-						<li>2050 kCal</li>
-						<li>Fat free</li>
-						<li>Free of lactose</li>
-					</ul>
-				</div>
-				<div class="water burger">
-					<h3>Water Burger</h3>
-					<img src="https://d1q0twczwkl2ie.cloudfront.net/wp-content/uploads/2017/09/colette.jpg" alt="Span" title="Another in-line element" width="300">
-					<ul>
-						<li>574 kCal</li>
-						<li>Contains mercury</li>
-						<li>May contain traces of plastic</li>
-					</ul>
+				<h3>Fire Burger</h3>
+				<img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4409427.jpg" alt="Fire Burger" title="Fire Burger" width="300">
+				<ul>
+				<li>2050 kCal</li>
+				<li>Fat free</li>
+				<li>Free of lactose</li>
+			</ul>
+		</div>
+		<div class="water burger">
+		<h3>Water Burger</h3>
+		<img src="https://d1q0twczwkl2ie.cloudfront.net/wp-content/uploads/2017/09/colette.jpg" alt="Span" title="Another in-line element" width="300">
+		<ul>
+		<li>574 kCal</li>
+		<li>Contains mercury</li>
+		<li>May contain traces of plastic</li>
+	</ul>
 
-				</div>
-				<div class="max burger">
-					<h3>Max Burger</h3>
-					<img src="https://i.pinimg.com/originals/0d/d9/6d/0dd96d5718f3fa2a04e853110e757817.jpg" alt="Span" title="Another in-line element" width="300">
-					<ul>
-						<li>300 kCal</li>
-						<li>Contains ???</li>
-						<li>????</li>
-					</ul>
-				!-->
-				</div>
-			</div>
+</div>
+<div class="max burger">
+<h3>Max Burger</h3>
+<img src="https://i.pinimg.com/originals/0d/d9/6d/0dd96d5718f3fa2a04e853110e757817.jpg" alt="Span" title="Another in-line element" width="300">
+<ul>
+<li>300 kCal</li>
+<li>Contains ???</li>
+<li>????</li>
+</ul>
+!-->
+</div>
+</div>
 
-			<section id="info-section">
-				<h2>Customer Information</h2>
-				<p id="info-text">This is where you provide necessary information</p>
-				<h3>Delivery Information</h3>
+<section id="info-section">
+	<h2>Customer Information</h2>
+	<p id="info-text">This is where you provide necessary information</p>
+	<h3>Delivery Information</h3>
 
-				<form>
-					<p>
-						<label for="fullname">Full name</label>
-						<br>
-						<input type="text" id="fullname" name="fn" required="required" placeholder="First- and last name" v-model="fullname">
-						{{fullname}}
-					</p>
-					<p>
-						<label for="email">E-mail</label>
-						<br>
-						<input type="email" id="email" name="em" required="required" placeholder="E-mail address" v-model="email">
-						{{email}}
-					</p>
-					<label for="streetname">Street</label>
-					<br>
-					<input type="text" id="streetname" name="sn" required="required" placeholder="Street name" v-model="streetname">
-					{{streetname}}
-				</p>
-				<label for="housenum">House</label>
-				<br>
-				<input type="number" id="housenum" name="hn" required="required" placeholder="House number" v-model="housenum">
-				{{housenum}}
-			</p>
-
-			<p>
-				<label for="payment">Payment options</label>
-				<br>
-				<select id="payment" name="rcp" v-model="payment">
-					<option>Credit Card</option>
-					<option>Debit Card</option>
-					<option>Cash</option>
-					<option>Food Coupons</option>
-					<option>Blood of the infidels</option>
-				</select>
-				{{payment}}
-			</p>
-
-			<input type="radio" name="gender" value="Male" v-model="gender">
-			<label for="Male">Male</label>
+	<form>
+		<p>
+			<label for="fullname">Full name</label>
 			<br>
-
-			<input type="radio" name="gender" value="Female" v-model="gender">
-			<label for="Female">Female</label>
+			<input type="text" id="fullname" name="fn" required="required" placeholder="First- and last name" v-model="fullname">
+			{{fullname}}
+		</p>
+		<p>
+			<label for="email">E-mail</label>
 			<br>
-
-			<input type="radio" name="gender" value="Non-binary" v-model="gender">
-			<label for="Non-binary">Non-binary</label>
-			<br>
-
-			<input type="radio" name="gender" value="Undisclosed" v-model="gender">
-			<label for="Undisclosed">Undisclosed</label>
-			{{gender}}
-		</form>
+			<input type="email" id="email" name="em" required="required" placeholder="E-mail address" v-model="email">
+			{{email}}
+		</p>
+		<label for="streetname">Street</label>
 		<br>
-		<button v-on:click="markDone()" type="submit" id="submit-bttn"><img src="https://cdn4.iconfinder.com/data/icons/tech-support-4/28/speedy_delivery-512.png" width="20px">Send Info</button>
+		<input type="text" id="streetname" name="sn" required="required" placeholder="Street name" v-model="streetname">
+		{{streetname}}
+	</p>
+	<label for="housenum">House</label>
+	<br>
+	<input type="number" id="housenum" name="hn" required="required" placeholder="House number" v-model="housenum">
+	{{housenum}}
+</p>
 
-	</section>
-</main>
+<p>
+	<label for="payment">Payment options</label>
+	<br>
+	<select id="payment" name="rcp" v-model="payment">
+		<option>Credit Card</option>
+		<option>Debit Card</option>
+		<option>Cash</option>
+		<option>Food Coupons</option>
+		<option>Blood of the infidels</option>
+	</select>
+	{{payment}}
+</p>
 
-<footer>
-	<p>Unhappy with your order? Tough luck!</p>
-</footer>
+<input type="radio" name="gender" value="Male" v-model="gender">
+<label for="Male">Male</label>
+<br>
+
+<input type="radio" name="gender" value="Female" v-model="gender">
+<label for="Female">Female</label>
+<br>
+
+<input type="radio" name="gender" value="Non-binary" v-model="gender">
+<label for="Non-binary">Non-binary</label>
+<br>
+
+<input type="radio" name="gender" value="Undisclosed" v-model="gender">
+<label for="Undisclosed">Undisclosed</label>
+{{gender}}
+</form>
+<br>
+<button v-on:click="isDisplayed = true" type="submit" id="submit-bttn"><img src="https://cdn4.iconfinder.com/data/icons/tech-support-4/28/speedy_delivery-512.png" width="20px">Send Info</button>
+
+</section>
+<div id="your-order" v-show="isDisplayed">
+	<h3>Your order:</h3>
+	<p>Name: {{fullname}}</p>
+	<p>E-mail: {{email}}</p>
+	<p>Address: {{streetname}} {{housenum}}<p>
+	<p>Gender: {{gender}}</p>
+	<p>Payment: {{payment}}</p>
+		<p>Ordered burgers:
+			<span v-for="burger in pickedBurgers">{{burger}}, </span>
+		</p>
+
+		</div>
+	</main>
+
+	<footer>
+		<p>Unhappy with your order? Tough luck!</p>
+	</footer>
 </body>
 
 </html>

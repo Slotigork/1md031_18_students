@@ -17,9 +17,23 @@ let brownBurger = new MenuItem("Brown Burger", 1012, false, false,"https://www.c
 let sweetBurger = new MenuItem("Sweet Burger", 7014, true, false,"https://www.halalcandies.co.uk/image/cache/catalog/Gummy%20Burger-500x500.JPG" );
 */
 let vm = new Vue({
-  el:"#burger-wrapper",
+  el:"#order-page",
   data:{
-    menu: food_items
+    menu: food_items,
+    pickedBurgers: [],
+    fullname: '',
+    email: '',
+    streetname: '',
+    housenum: undefined,
+    payment: '',
+    gender: 'Undisclosed',
+
+    isDisplayed: false
+
   },
-}
-);
+  methods: {
+    markDone: function(){
+      console.log("Button has been clicked!");
+    },
+  }
+  });
