@@ -28,12 +28,27 @@ let vm = new Vue({
     payment: '',
     gender: 'Undisclosed',
 
-    isDisplayed: false
+    isDisplayed: false,
+    orderedBurgers: [],
+    ordername: '',
+    orderEmail: '',
+    orderAddress: '',
+    orderPayment:'',
+    orderGender: '',
 
   },
   methods: {
     markDone: function(){
       console.log("Button has been clicked!");
     },
+    createOrder: function(){
+      this.isDisplayed = true,
+      this.orderedBurgers = this.pickedBurgers.slice(),
+      this.ordername = this.fullname,
+      this.orderEmail = this.email,
+      this.orderAddress = this.streetname + ' ' + this.housenum,
+      this.orderPayment = this.payment,
+      this.orderGender = this.gender
+    }
   }
   });

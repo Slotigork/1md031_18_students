@@ -73,24 +73,20 @@
 		<p>
 			<label for="fullname">Full name</label>
 			<br>
-			<input type="text" id="fullname" name="fn" required="required" placeholder="First- and last name" v-model="fullname">
-			{{fullname}}
+			<input type="text" id="fullname" name="fn" required="required" placeholder="First- and last name" v-model.lazy="fullname">
 		</p>
 		<p>
 			<label for="email">E-mail</label>
 			<br>
-			<input type="email" id="email" name="em" required="required" placeholder="E-mail address" v-model="email">
-			{{email}}
+			<input type="email" id="email" name="em" required="required" placeholder="E-mail address" v-model.lazy="email">
 		</p>
 		<label for="streetname">Street</label>
 		<br>
-		<input type="text" id="streetname" name="sn" required="required" placeholder="Street name" v-model="streetname">
-		{{streetname}}
+		<input type="text" id="streetname" name="sn" required="required" placeholder="Street name" v-model.lazy="streetname">
 	</p>
 	<label for="housenum">House</label>
 	<br>
-	<input type="number" id="housenum" name="hn" required="required" placeholder="House number" v-model="housenum">
-	{{housenum}}
+	<input type="number" id="housenum" name="hn" required="required" placeholder="House number" v-model.lazy="housenum">
 </p>
 
 <p>
@@ -103,7 +99,6 @@
 		<option>Food Coupons</option>
 		<option>Blood of the infidels</option>
 	</select>
-	{{payment}}
 </p>
 
 <input type="radio" name="gender" value="Male" v-model="gender">
@@ -120,21 +115,20 @@
 
 <input type="radio" name="gender" value="Undisclosed" v-model="gender">
 <label for="Undisclosed">Undisclosed</label>
-{{gender}}
 </form>
 <br>
-<button v-on:click="isDisplayed = true" type="submit" id="submit-bttn"><img src="https://cdn4.iconfinder.com/data/icons/tech-support-4/28/speedy_delivery-512.png" width="20px">Send Info</button>
+<button @click="createOrder()" type="submit" id="submit-bttn"><img src="https://cdn4.iconfinder.com/data/icons/tech-support-4/28/speedy_delivery-512.png" width="20px">Send Info</button>
 
 </section>
 <div id="your-order" v-show="isDisplayed">
 	<h3>Your order:</h3>
-	<p>Name: {{fullname}}</p>
-	<p>E-mail: {{email}}</p>
-	<p>Address: {{streetname}} {{housenum}}<p>
-	<p>Gender: {{gender}}</p>
-	<p>Payment: {{payment}}</p>
+	<p>Name: {{ordername}}</p>
+	<p>E-mail: {{orderEmail}}</p>
+	<p>Address: {{orderAddress}}<p>
+	<p>Gender: {{orderGender}}</p>
+	<p>Payment: {{orderPayment}}</p>
 		<p>Ordered burgers:
-			<span v-for="burger in pickedBurgers">{{burger}}, </span>
+			<span v-for="burger in orderedBurgers">{{burger}}, </span>
 		</p>
 
 		</div>

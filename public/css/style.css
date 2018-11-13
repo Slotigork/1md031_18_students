@@ -64,16 +64,19 @@ table{
 }
 
 #burger-wrapper{
-  display: grid;
+  display: inline-grid;
   grid-gap: 0px;
-  margin: 0 auto;
+  margin: 0 0.5em;
   width:100%;
-  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-columns: 33% 33% 33%;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
 }
 
 .menu-item{
-
   vertical-align: top;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
 }
 
 .menu-item > h3{
@@ -87,5 +90,5 @@ table{
 }
 
 ul{
-  margin-left:20%
+  margin-left:30%
 }

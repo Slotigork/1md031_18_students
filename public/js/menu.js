@@ -33,6 +33,13 @@ var food_items = [
     'kcal': 7014,
     'containsGluten': true,
     'containsLactose': false,
-    'img': 'https://www.halalcandies.co.uk/image/cache/catalog/Gummy%20Burger-500x500.JPG'
+    'img': 'http://video.oneserviceplace.com/wp-content/uploads/2018/06/1528785500_maxresdefault.jpg'
+  },
+  {
+    'name': 'Cream Burger',
+    'kcal': 2050,
+    'containsGluten': true,
+    'containsLactose': true,
+    'img': 'http://www.addykart.com/image/cache/catalog/chatori%20galii/veg-cream-burger-copy-750x750.jpg'
   }
 ]
