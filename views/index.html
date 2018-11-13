@@ -1,22 +1,29 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 	<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
 	<title>The best burgers</title>
 	<meta charset="utf-8"/>
+
 	<link rel="stylesheet" type="text/css" href="/css/style.css" />
-<link href="https://fonts.googleapis.com/css?family=Merriweather|Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Merriweather|Roboto" rel="stylesheet">
+	<link rel="stylesheet" href="css/deli-very.css">
+
 	<script type="text/javascript" src="js/menu.js"></script>
 	<script src="https://vuejs.org/js/vue.js"></script>
-	<script src="js/js_script.js"></script>
+	<script src="/socket.io/socket.io.js" defer></script>
 	<script src="js/vue_script.js" defer></script>
+
 </head>
 <body>
 	<main id="order-page">
 		<section id="burger-title">
-			<h1>Welcome to BurgerOnline</h1>
-			<img src="https://images2.alphacoders.com/572/572478.jpg">
+			<img id="burger-logo" src="/img/logo.png">
+			<h1>Welcome to Delicious Burgers</h1>
+			<img id="background-title-img" src="https://images2.alphacoders.com/572/572478.jpg">
 		</section>
 
 		<section id="select-section">
@@ -26,6 +33,7 @@
 				<div class="menu-item" v-for="item in menu">
 					<h3>{{item.name}}</h3>
 					<img :src="item.img" width="200">
+
 					<ul>
 						<li>{{item.kcal + ' kCal'}} </li>
 						<li v-if="item.containsGluten == true"> Contains Gluten</li>
@@ -33,6 +41,7 @@
 						<input type="checkbox" :value="item.name" v-model="pickedBurgers">
 						<label>order</label>
 					</ul>
+
 				</div>
 				<!--<div class="fire burger">
 				<h3>Fire Burger</h3>
@@ -76,19 +85,21 @@
 			<br>
 			<input type="text" id="fullname" name="fn" required="required" placeholder="First- and last name" v-model.lazy="fullname">
 		</p>
+
 		<p>
 			<label for="email">E-mail</label>
 			<br>
 			<input type="email" id="email" name="em" required="required" placeholder="E-mail address" v-model.lazy="email">
 		</p>
-		<label for="streetname">Street</label>
+
+		<!--		<label for="streetname">Street</label>
 		<br>
 		<input type="text" id="streetname" name="sn" required="required" placeholder="Street name" v-model.lazy="streetname">
 	</p>
 	<label for="housenum">House</label>
 	<br>
 	<input type="number" id="housenum" name="hn" required="required" placeholder="House number" v-model.lazy="housenum">
-</p>
+</p> !-->
 
 <p>
 	<label for="payment">Payment options</label>
@@ -116,6 +127,19 @@
 
 <input type="radio" name="gender" value="Undisclosed" v-model="gender">
 <label for="Undisclosed">Undisclosed</label>
+
+<h1> Click in the map! </h1>
+<a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+<div class="view-box">
+	<div id="dots" v-on:click="displayOrder">
+		<div
+		v-for="(order, key) in orders"
+		v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+		{{key}}
+	</div>
+</div>
+</div>
+
 </form>
 <br>
 <button @click="createOrder()" type="submit" id="submit-bttn"><img src="https://cdn4.iconfinder.com/data/icons/tech-support-4/28/speedy_delivery-512.png" width="20px">Send Info</button>
@@ -125,19 +149,19 @@
 	<h3>Your order:</h3>
 	<p>Name: {{ordername}}</p>
 	<p>E-mail: {{orderEmail}}</p>
-	<p>Address: {{orderAddress}}<p>
+	<!--<p>Address: {{orderAddress}}</p> !-->
 	<p>Gender: {{orderGender}}</p>
 	<p>Payment: {{orderPayment}}</p>
-		<p>Ordered burgers:
-			<span v-for="burger in orderedBurgers">{{burger}}, </span>
-		</p>
+	<p>Ordered burgers:
+		<span v-for="burger in orderedBurgers">{{burger}}, </span>
+	</p>
 
-		</div>
-	</main>
+</div>
+</main>
 
-	<footer>
-		<p>Unhappy with your order? Tough luck!</p>
-	</footer>
+<footer>
+	<p>Unhappy with your order? Tough luck!</p>
+</footer>
 </body>
 
 </html>

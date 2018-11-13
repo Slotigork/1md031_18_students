@@ -16,6 +16,9 @@ let maxBurger = new MenuItem("Max Burger", 300, true, true, "https://i.pinimg.co
 let brownBurger = new MenuItem("Brown Burger", 1012, false, false,"https://www.chowstatic.com/assets/recipe_photos/21395_bison_mushroom_burger.jpg" );
 let sweetBurger = new MenuItem("Sweet Burger", 7014, true, false,"https://www.halalcandies.co.uk/image/cache/catalog/Gummy%20Burger-500x500.JPG" );
 */
+'use strict';
+let socket = io();
+
 let vm = new Vue({
   el:"#order-page",
   data:{
@@ -23,8 +26,8 @@ let vm = new Vue({
     pickedBurgers: [],
     fullname: '',
     email: '',
-    streetname: '',
-    housenum: undefined,
+    /*    streetname: '',
+    housenum: undefined, */
     payment: '',
     gender: 'Undisclosed',
 
@@ -32,12 +35,30 @@ let vm = new Vue({
     orderedBurgers: [],
     ordername: '',
     orderEmail: '',
-    orderAddress: '',
+    /*    orderAddress: '', */
     orderPayment:'',
     orderGender: '',
 
+    orders: {},
   },
+  created: function () {
+    socket.on('initialize', function (data) {
+      this.orders = data.orders;
+    }.bind(this));
+
+    socket.on('currentQueue', function (data) {
+      this.orders = data.orders;
+    }.bind(this));
+  },
+
   methods: {
+    displayOrder:function(event){
+      var offset = {x: event.currentTarget.getBoundingClientRect().left,
+        y: event.currentTarget.getBoundingClientRect().top};
+        socket.emit("addOrder", { orderId: "T",
+          details: { x: event.clientX - 10 - offset.x,
+            y: event.clientY - 10 - offset.y }});
+          },
     markDone: function(){
       console.log("Button has been clicked!");
     },
@@ -46,9 +67,24 @@ let vm = new Vue({
       this.orderedBurgers = this.pickedBurgers.slice(),
       this.ordername = this.fullname,
       this.orderEmail = this.email,
-      this.orderAddress = this.streetname + ' ' + this.housenum,
+      /*      this.orderAddress = this.streetname + ' ' + this.housenum, */
       this.orderPayment = this.payment,
       this.orderGender = this.gender
-    }
-  }
-  });
+    },
+    getNext: function () {
+      var lastOrder = Object.keys(this.orders).reduce(function (last, next) {
+        return Math.max(last, next);
+      }, 0);
+      return lastOrder + 1;
+    },
+    addOrder: function (event) {
+      var offset = {x: event.currentTarget.getBoundingClientRect().left,
+        y: event.currentTarget.getBoundingClientRect().top};
+        socket.emit("addOrder", { orderId: this.getNext(),
+          details: { x: event.clientX - 10 - offset.x,
+            y: event.clientY - 10 - offset.y },
+            orderItems: ["Beans", "Curry"]
+          });
+        },
+      }
+    });
