@@ -1,5 +1,7 @@
 body {
-  font-family:"Comic Sans MS";
+  font-family: 'Roboto', sans-serif;
+  color: #e8b30f;
+  background-color: #000000;
 }
 
 p{
@@ -7,39 +9,37 @@ p{
 }
 
 h1,h2,h3,h4,h5,h6{
-  font-family:'Spicy Rice', cursive;
+  font-family: 'Merriweather', serif;
   text-transform: uppercase;
-}
-
-button:hover {
-  background-color:green;
-  color:white;
-  cursor: pointer;
-}
-
-#burger-title{
-  height: 20vh;
-  overflow:hidden;
-  margin-bottom:10px;
-  text-align: center;
-}
-
-#burger-title > img{
-  opacity:0.3;
-  width:100vw;
-}
-#burger-title > h1{
-  margin-bottom: -3em;
-  white-space:nowrap;
-  margin-left:auto;
-  margin-right:auto;
-  left: 150px;
-  padding-top:10px;
-  font-size: 3em;
 }
 
 h2{
   font-size: 2em;
+}
+
+button:hover {
+  background-color:#e8b30f;
+  cursor: pointer;
+}
+
+#burger-title{
+  height: 10em;
+  overflow:hidden;
+  text-align: center;
+  margin-top:-0.5em;
+}
+
+#burger-title > img{
+  z-index:0;
+  position:relative;
+  width:100vw;
+}
+#burger-title > h1{
+  z-index: 5;
+  position:relative;
+  white-space:nowrap;
+  font-size: 3em;
+  margin-bottom: -3em;
 }
 
 section > button,form,h2,h3,#info-text,#select-text{
@@ -47,16 +47,14 @@ section > button,form,h2,h3,#info-text,#select-text{
 }
 
 #select-section{
-  border: 3px;
+  border: 2px;
   border-style: dashed;
   margin-bottom:10px;
 }
 
 #info-section{
-  background-color: black;
-  color: white;
-  border: 3px;
-  border-style: dotted;
+  background-color: #440b00;
+  border-top: solid 1px;
 }
 
 table{
@@ -69,14 +67,18 @@ table{
   margin: 0 0.5em;
   width:100%;
   grid-template-columns: 33% 33% 33%;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+}
+
+#your-order > p{
+  margin-left: 20px;
 }
 
 .menu-item{
   vertical-align: top;
-  border-top: 1px solid black;
-  border-right: 1px solid black;
+  border-right: 1px solid;
+  border-top: 1px solid;
 }
 
 .menu-item > h3{
