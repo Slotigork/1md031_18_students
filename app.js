@@ -8,7 +8,7 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
- 
+
 // Pick arbitrary port for server
 var port = 3000;
 app.set('port', (process.env.PORT || port));
@@ -30,7 +30,7 @@ app.get('/dispatcher', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/dispatcher.html'));
 });
 
-// Store data in an object to keep the global namespace clean and 
+// Store data in an object to keep the global namespace clean and
 // prepare for multiple instances of data if necessary
 function Data() {
   this.orders = {};
@@ -39,6 +39,7 @@ function Data() {
 /*
   Adds an order to to the queue
 */
+
 Data.prototype.addOrder = function (order) {
   //Store the order in an "associative array" with orderId as key
   this.orders[order.orderId] = order;

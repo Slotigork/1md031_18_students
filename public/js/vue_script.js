@@ -1,4 +1,4 @@
-function MenuItem(b_name, kcal, containsGluten, containsLactose, imgurl){
+/*function MenuItem(b_name, kcal, containsGluten, containsLactose, imgurl){
   this.name = b_name;
   this.kcal=kcal;
   this.containsGluten = containsGluten;
@@ -8,7 +8,7 @@ function MenuItem(b_name, kcal, containsGluten, containsLactose, imgurl){
   this.returnNameAndCal=function(){
     return this.name + ' contains ' + this.cal + ' kCal';
   }
-}
+}*/
 /*
 let fireBurger = new MenuItem("Fire Burger", 2050, true, true, 'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4409427.jpg' );
 let waterBurger = new MenuItem("Water Burger", 574, false, true, 'https://d1q0twczwkl2ie.cloudfront.net/wp-content/uploads/2017/09/colette.jpg' );
@@ -43,7 +43,7 @@ let vm = new Vue({
     details: {}
   },
 
-  created: function () {
+  created: function () { //Det står i labb-instruktionen att denna ska bort, labb-ledarna säger att den ska vara kvar??
     socket.on('initialize', function (data) {
       this.orders = data.orders;
     }.bind(this));
