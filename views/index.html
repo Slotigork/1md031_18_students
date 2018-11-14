@@ -32,7 +32,7 @@
 			<div id="burger-wrapper">
 				<div class="menu-item" v-for="item in menu">
 					<h3>{{item.name}}</h3>
-					<img :src="item.img" width="200">
+					<img :src="item.img" width="200" height="150">
 
 					<ul>
 						<li>{{item.kcal + ' kCal'}} </li>
@@ -71,6 +71,7 @@
 <li>????</li>
 </ul>
 !-->
+
 </div>
 </div>
 
@@ -132,17 +133,15 @@
 <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
 <div class="view-box">
 	<div id="dots" v-on:click="displayOrder">
-		<div
-		v-for="(order, key) in orders"
-		v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
-		{{key}}
+		<div v-bind:style="{ left: details.x + 'px', top: details.y + 'px'}">
+		T
 	</div>
 </div>
 </div>
 
 </form>
 <br>
-<button @click="createOrder()" type="submit" id="submit-bttn"><img src="https://cdn4.iconfinder.com/data/icons/tech-support-4/28/speedy_delivery-512.png" width="20px">Send Info</button>
+<button @click="createOrder(),addOrder()" type="submit" id="submit-bttn"><img src="https://cdn4.iconfinder.com/data/icons/tech-support-4/28/speedy_delivery-512.png" width="20px">Send Info</button>
 
 </section>
 <div id="your-order" v-show="isDisplayed">
